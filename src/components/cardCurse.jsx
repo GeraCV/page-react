@@ -1,6 +1,8 @@
 import React from 'react'
 import propTypes from 'prop-types'
 
+
+
 const Card = ({ name, image, teacher, price }) => {
   return (
     <article className="card">

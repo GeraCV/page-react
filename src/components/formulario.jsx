@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 class Formulario extends React.Component {
   constructor(props) {
     super(props)
@@ -8,6 +9,15 @@ class Formulario extends React.Component {
       nombre: '',
       correo: ''
     }
+
+    this.duplicateText = this.duplicateText.bind(this)
+  }
+
+
+  duplicateText({ value }, type) {
+    this.setState({
+      [type]: value
+    })
   }
 
   render() {
@@ -19,24 +29,21 @@ class Formulario extends React.Component {
             <div className="form__item">
               <label htmlFor=""> Ingresa tu nombre </label>
               <input type="text"
-                onChange={e => this.setState({
-                  nombre: e.target.value
-                })}
+                onChange={(e) => this.duplicateText(e.target, 'nombre')
+                }
               />
             </div>
             <div className="form__item">
               <label htmlFor=""> Ingresa tu correo </label>
               <input type="email"
-                onChange={e => this.setState({
-                  correo: e.target.value
-                })}
+                onChange={(e) => this.duplicateText(e.target, 'correo')}
               />
             </div>
           </div>
         </form>
         <div>
           <h4> {`Hola ${this.state.nombre}`} </h4>
-          <h4> {`tu correo es ${this.state.correo}`} </h4>
+          {<h4> {`tu correo es ${this.state.correo}`} </h4>}
         </div>
       </div>
     )
