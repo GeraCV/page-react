@@ -1,13 +1,16 @@
 import React from 'react'
 import propTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 
 
-const Card = ({ name, image, teacher, price }) => {
+const Card = ({ name, teacher, image, price, nameRoute }) => {
   return (
     <article className="card">
       <div className="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
-        <img src={image} alt="teacher" />
+        <Link to={`/cursos/${nameRoute}`}>
+          <img src={image} alt="teacher" />
+        </Link>
       </div>
       <div className="card__data s-border s-radius-br s-radius-bl s-pxy-2">
         <h3 className="t5 s-mb-2 s-center">
@@ -24,7 +27,7 @@ const Card = ({ name, image, teacher, price }) => {
           </div>
         </div>
         <div className="s-main-center">
-          <a className="button--ghost-alert button--tiny" href="#"> {price + ' MXN'} </a>
+          <a className="button--ghost-alert button--tiny" href="ed.team"> {price + ' MXN'} </a>
         </div>
       </div>
     </article>

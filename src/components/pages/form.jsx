@@ -1,13 +1,13 @@
 import React from 'react'
 
 
-class Formulario extends React.Component {
+class Form extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      nombre: '',
-      correo: ''
+      name: '',
+      email: ''
     }
 
     this.duplicateText = this.duplicateText.bind(this)
@@ -29,25 +29,25 @@ class Formulario extends React.Component {
             <div className="form__item">
               <label htmlFor=""> Ingresa tu nombre </label>
               <input type="text"
-                onChange={(e) => this.duplicateText(e.target, 'nombre')
+                onChange={(e) => this.duplicateText(e.target, 'name')
                 }
               />
             </div>
             <div className="form__item">
               <label htmlFor=""> Ingresa tu correo </label>
               <input type="email"
-                onChange={(e) => this.duplicateText(e.target, 'correo')}
+                onChange={(e) => this.duplicateText(e.target, 'email')}
               />
             </div>
           </div>
         </form>
         <div>
-          <h4> {`Hola ${this.state.nombre}`} </h4>
-          {<h4> {`tu correo es ${this.state.correo}`} </h4>}
+          <h4> {`Hola ${this.state.name}`} </h4>
+          {<h4> {`tu correo es ${this.state.email}`} </h4>}
         </div>
       </div>
     )
   }
 }
 
-export default Formulario
+export default Form
