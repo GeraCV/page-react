@@ -5,7 +5,8 @@ import Header from './organisms/header';
 import Banner from './organisms/banner.jsx';
 import Curses from './pages/curses';
 import Form from './pages/form';
-import Curse from './pages/curse'
+import Curse from './pages/curse';
+import Users from './pages/users';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/formulario" component={Form} />
         <Route path="/cursos/:nameRoute" component={Curse} />
         <Route path="/cursos" component={Curses} />
+        <Route path="/usuarios" component={Users} />
         <Route component={() => (<h2> Error 404</h2>)} />
       </Switch>
     </Router>

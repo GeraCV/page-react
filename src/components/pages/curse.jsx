@@ -13,7 +13,7 @@ const Curse = ({ match }) => {
         <h3 className="m-cols-3 center">
           {nowCurse.name}
         </h3>
-        <img src={nowCurse.image} className="m-cols-3 center" alt="teacher" width="400px" height="250px" />
+        <img src={nowCurse.image} className="m-cols-3" alt="teacher" width="400px" height="250px" />
         <p className="small m-cols-2 center"> {nowCurse.teacher} </p>
       </div>
     )
