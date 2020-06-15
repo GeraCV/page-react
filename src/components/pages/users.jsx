@@ -1,5 +1,5 @@
 import React from 'react'
-import CardUser from '../organisms/cardUser'
+import UsersGrid from '../organisms/usersGrid'
 
 class Users extends React.Component {
 
@@ -11,6 +11,14 @@ class Users extends React.Component {
     }
   }
 
+
+  render() {
+    const { users } = this.state
+    return (
+      <UsersGrid users={users} />
+    )
+  }
+
   async componentDidMount() {
     const answer = await fetch('https://jsonplaceholder.typicode.com/users')
     const response = await answer.json()
@@ -18,30 +26,6 @@ class Users extends React.Component {
     this.setState({
       users: response
     })
-  }
-
-
-  render() {
-    const { users } = this.state
-    return (
-      <>
-        <div className="center">
-          <h1> Usuarios </h1>
-          <div className="ed-grid m-grid-3">
-            {
-              users.map(user => (
-                <CardUser
-                  id={user.id}
-                  name={user.name}
-                  username={user.username}
-                  email={user.email}
-                />
-              ))
-            }
-          </div>
-        </div>
-      </>
-    )
   }
 
 }

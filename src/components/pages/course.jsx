@@ -1,7 +1,10 @@
 import React from 'react'
 import courses from '../../listCurses'
+// import Courses from './courses'
 
-const Curse = ({ match }) => {
+
+
+const Course = ({ match }) => {
 
   const nowCurse = courses.filter((c) => c.nameRoute === match.params.nameRoute)[0]
   console.log(nowCurse)
@@ -26,4 +29,4 @@ const Curse = ({ match }) => {
   )
 }
 
-export default Curse
+export default Course
