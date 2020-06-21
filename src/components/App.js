@@ -16,7 +16,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Banner} />
         <Route path="/formulario" component={Form} />
-        <Route path="/cursos/:nameRoute" component={Course} />
+        <Route path="/cursos/:id" component={Course} />
         <Route path="/cursos" component={Courses} />
         <Route path="/usuarios" component={Users} />
         <Route component={() => (<h2> Error 404</h2>)} />

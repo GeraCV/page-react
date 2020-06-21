@@ -1,24 +1,41 @@
-import React from 'react'
-import courses from '../../listCurses'
-// import Courses from './courses'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 
 
 const Course = ({ match }) => {
 
-  const nowCurse = courses.filter((c) => c.nameRoute === match.params.nameRoute)[0]
-  console.log(nowCurse)
+  const [state, setState] = useState({})
+  const [comment, setComment] = useState("")
+
+  useEffect(() => {
+    axios.get(`http://my-json-server.typicode.com/GeraCV/db-json/courses/${match.params.id}`)
+      .then(response => setState(response.data))
+  }, [])
+
+
+  const changeComment = e => {
+    setComment(e.target.value)
+  }
+
+
 
   return (
-
-    nowCurse ? (
-      <div className="ed-grid ed-grid-3">
-        <h3 className="m-cols-3 center">
-          {nowCurse.name}
-        </h3>
-        <img src={nowCurse.image} className="m-cols-3" alt="teacher" width="400px" height="250px" />
-        <p className="small m-cols-2 center"> {nowCurse.teacher} </p>
+    state ? (
+      <div className="ed-grid">
+        <div className="l-block">
+          <h3 className="m-cols-3 center"> {state.name} </h3>
+          <img src={state.image} className="m-cols-3" alt="teacher" width="400px" height="250px" />
+          <p className="small m-cols-2 center"> {state.teacher} </p>
+        </div>
+        <div className="ed-grid">
+          <h2> Escribe tu comentario </h2>
+          <input type="text" placeholder="Ingresa el mensaje ..." onChange={changeComment.bind(this)} />
+          <p> {comment} </p>
+        </div>
       </div>
+
+
     )
       : (
         <>

@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 
 
 
-const Card = ({ name, teacher, image, price, nameRoute }) => {
+const Card = ({ name, teacher, image, price, id }) => {
   return (
     <article className="card">
       <div className="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
-        <Link to={`/cursos/${nameRoute}`}>
+        <Link to={`/cursos/${id}`}>
           <img src={image} alt="teacher" />
         </Link>
       </div>

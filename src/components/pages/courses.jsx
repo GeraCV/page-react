@@ -1,7 +1,6 @@
 import React from 'react'
 import CoursesGrid from '../organisms/coursesGrid'
-import withLoader from '../HOC/withLoader'
-// import courses from '../../listCurses'
+
 
 
 class Courses extends React.Component {
