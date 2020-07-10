@@ -2,12 +2,12 @@ import React from 'react'
 import propTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { addToCart } from '../../redux/actionsCreators'
+import { addToCart, deleteToCart } from '../../redux/actionsCreators'
 
 
 
 
-const Card = ({ name, teacher, image, price, id, addCourseToCart, crt }) => {
+const Card = ({ name, teacher, image, price, id, crt, addCourseToCart, deleteCourseToCart }) => {
   return (
     <article className="card">
       <div className="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
@@ -30,16 +30,21 @@ const Card = ({ name, teacher, image, price, id, addCourseToCart, crt }) => {
           </div>
         </div>
         <div className="s-main-center">
-          <button className="button--ghost-alert button--tiny"
-            href="ed.team"
-            onClick={() => addCourseToCart(id)}
-          >
-            {
-              crt.find(d => d === id)
-                ? '¡Agregado! '
-                : price + ' MXN'
-            }
-          </button>
+          {
+            crt.find(d => d === id)
+              ? <button className="button--ghost-alert button--tiny"
+                href="ed.team"
+                onClick={() => deleteCourseToCart(id)}
+              >
+                Eliminar
+              </button>
+              : <button className="button--ghost-alert button--tiny"
+                href="ed.team"
+                onClick={() => addCourseToCart(id)}
+              >
+                {price} MXN
+              </button>
+          }
         </div>
       </div>
     </article>
@@ -62,14 +67,18 @@ Card.defaultProps = {
 
 const mapStateToProps = (state) => {
   return (
-    { crt: state.cart }
+    { crt: state.cartReducer.cart }
   )
 }
 
 const mapDispatchToProps = dispatch => ({
   addCourseToCart(id) {
     dispatch(addToCart(id))
+  },
+  deleteCourseToCart(id) {
+    dispatch(deleteToCart(id))
   }
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card)
